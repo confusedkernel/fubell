@@ -11,7 +11,6 @@
 #import "src/acknowledgement-page.typ": acknowledgement-page
 
 #let thesis(
-  // -- Bilingual metadata --
   university: (zh: "國立臺灣大學", en: "National Taiwan University"),
   college: (zh: "", en: ""),
   institute: (zh: "", en: ""),
@@ -55,7 +54,6 @@
   )
 
   // -- Typography --
-  // Body uses 新細明體 (PMingLiU) for Chinese, Times New Roman for English
   set text(
     size: config.body-size,
     font: config.font-en + config.font-zh,
@@ -65,7 +63,6 @@
   set par(leading: config.line-spacing)
 
   // -- Heading style --
-  // Headings use 標楷體 for Chinese per NTU format
   set heading(numbering: "1.1")
   show heading.where(level: 1): it => {
     pagebreak(weak: true)

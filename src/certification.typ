@@ -22,7 +22,7 @@
 ) = {
   let degree-label = if degree == "phd" { "博士" } else { "碩士" }
 
-  page(numbering: none, margin: (top: 3cm, bottom: 2cm, left: 3cm, right: 3cm))[
+  page(numbering: "i", margin: (top: 3cm, bottom: 2cm, left: 3cm, right: 3cm))[
     #set text(font: font-en + font-zh)
 
 

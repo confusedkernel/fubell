@@ -15,10 +15,10 @@
 #let subheading-size = 14pt
 
 // English text
-#let font-en = ("Times New Roman", "Libertinus Serif")
+#let font-en = ("Times New Roman", "TeX Gyre Termes", "STIX Two Text")
 
 // Chinese text
-#let font-zh = ("BiauKaiTC", "DFKai-SB", "Kaiti TC", "Kaiti SC")
+#let font-zh = ("BiauKaiTC", "DFKai-SB", "TW-MOE-Std-Kai", "Kaiti TC", "Kaiti SC")
 
 // Spacing
 #let line-spacing = 1.5em

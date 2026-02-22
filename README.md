@@ -4,7 +4,7 @@ A [Typst](https://typst.app) thesis template for **National Taiwan University** 
 
 Inspired by the [ntu-thesis](https://github.com/tzhuan/ntu-thesis) LaTeX template.
 
-The name is a reference to Fu Bell (傅鐘) in NTU, in case you haven't realized it yet :)
+The project name is a reference to Fu Bell (傅鐘) in NTU.
 
 ## Quick Start
 
@@ -87,7 +87,23 @@ The `lang` option (default `"zh"`) controls the document language and structural
 
 ## Fonts
 
-The template uses **Times New Roman** for English text and **標楷體 (BiauKai)** for Chinese text, matching NTU's formatting requirements. If these fonts are not installed, Typst will fall back to bundled alternatives.
+The template uses **Times New Roman** for English text and **標楷體 (BiauKai)** for Chinese text, matching NTU's formatting requirements.
+
+The font fallback chains are:
+
+| Purpose | Fallback order |
+|---------|---------------|
+| English | Times New Roman → TeX Gyre Termes → STIX Two Text |
+| Chinese | BiauKaiTC → DFKai-SB → TW-MOE-Std-Kai → Kaiti TC → Kaiti SC |
+
+### Caveats — Typst web app
+
+Times New Roman and 標楷體 are proprietary fonts that are **not available** on the Typst web app. The template will automatically fall back to:
+
+- **TeX Gyre Termes** for English — the closest open-source match to Times New Roman [(Typst Issue #416)](https://github.com/typst/typst/issues/416).
+- **TW-MOE-Std-Kai** (教育部標準楷書) for Chinese — available natively on the Typst web app.
+
+The output will look very similar but not byte-identical to a local build with the proprietary fonts installed. For official submission, it is recommended to **compile locally with Times New Roman and 標楷體 installed**.
 
 ## License
 
