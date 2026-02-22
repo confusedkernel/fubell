@@ -5,7 +5,7 @@
 //   - Body paragraph: 16pt/24pt leading, single spaced
 //   - Signature table: 16pt/24pt leading, double spaced
 
-#import "config.typ": font-zh, font-en
+#import "config.typ": font-en, font-zh
 
 // Helper: an underline blank of a given width, aligned to text baseline.
 #let sig-line(width) = box(width: width, stroke: (bottom: 0.5pt), outset: (bottom: 3pt))[#hide[X]]
@@ -25,7 +25,7 @@
   page(numbering: none, margin: (top: 3cm, bottom: 2cm, left: 3cm, right: 3cm))[
     #set text(font: font-en + font-zh)
 
-    // === Header ===
+
     #align(center)[
       #text(size: 24pt)[
         #set par(leading: 0.5em)
@@ -42,7 +42,6 @@
 
     #v(1fr)
 
-    // === Thesis titles — 20pt ===
     #align(center)[
       #set par(leading: 0.5em)
       #text(size: 20pt)[#title.zh]
@@ -52,18 +51,18 @@
 
     #v(1fr)
 
-    // === Body paragraph — 16pt, single spaced ===
+
     #set text(size: 16pt)
     #set par(first-line-indent: 2em, leading: 0.5em)
     本論文係#author.zh 君（#student-id）在#university.zh #institute.zh 完成之#degree-label 學位論文，於民國#date.year-zh 年#date.month-zh 月承下列考試委員審查通過及口試及格，特此證明
 
     #v(1fr)
 
-    // === Signature table — 16pt, double spaced ===
+
     #set text(size: 16pt)
     #set par(first-line-indent: 0em)
 
-    // Advisor line: 口試委員：____________
+
     口試委員：#h(1fr)#sig-line(11.5cm)
 
     #v(0.2em)
@@ -71,7 +70,7 @@
 
     #v(0.5em)
 
-    // Committee rows: two lines per row
+
     #for _ in range(committee-count) {
       v(1em)
       h(1fr)

@@ -32,13 +32,13 @@
     en: ("typesetting", "thesis template", "Typst"),
   ),
 
-  abstract-zh: include "content/abstract-zh.typ",
-  abstract-en: include "content/abstract-en.typ",
-  acknowledgement-zh: include "content/acknowledgement-zh.typ",
-  acknowledgement-en: include "content/acknowledgement-en.typ",
+  abstract-zh: include "sections/abstract-zh.typ",
+  abstract-en: include "sections/abstract-en.typ",
+  acknowledgement-zh: include "sections/acknowledgement-zh.typ",
+  acknowledgement-en: include "sections/acknowledgement-en.typ",
 
-  bibliography-file: bibliography("refs.bib"),
+  bibliography-file: bibliography("bibliography/refs.bib"),
 )
 
 // Main chapters
-#include "content/chapters/introduction.typ"
+#include "sections/chapters/introduction.typ"

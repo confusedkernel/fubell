@@ -4,6 +4,8 @@ A [Typst](https://typst.app) thesis template for **National Taiwan University** 
 
 Inspired by the [ntu-thesis](https://github.com/tzhuan/ntu-thesis) LaTeX template.
 
+The name is a reference to Fu Bell (傅鐘) in NTU, in case you haven't realized it yet :)
+
 ## Quick Start
 
 ```bash

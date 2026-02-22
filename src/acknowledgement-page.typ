@@ -1,5 +1,5 @@
 // Acknowledgement page layout (supports both Chinese and English).
-// Per thesissample.doc: heading in 標楷體, body in 新細明體/Times New Roman.
+
 
 #import "config.typ": font-zh, font-zh, font-en
 
