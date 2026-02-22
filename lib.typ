@@ -30,6 +30,7 @@
   acknowledgement-en: [],
 
   // -- Options --
+  lang: "zh", // "zh" or "en" — controls outline titles and document language
   committee-count: 4,
   bibliography-file: none,
 
@@ -58,8 +59,8 @@
   set text(
     size: config.body-size,
     font: config.font-en + config.font-zh,
-    lang: "zh",
-    region: "tw",
+    lang: lang,
+    ..if lang == "zh" { (region: "tw") },
   )
   set par(leading: config.line-spacing)
 
@@ -127,19 +128,25 @@
   )
 
   // 6. Table of contents (目次)
-  page(numbering: "i")[
-    #outline(title: [目次], depth: 3)
-  ]
+  {
+    let toc-title = if lang == "zh" { "目錄" } else { "Table of Contents" }
+    let lof-title = if lang == "zh" { "圖目錄" } else { "List of Figures" }
+    let lot-title = if lang == "zh" { "表目錄" } else { "List of Tables" }
 
-  // 7. List of figures (圖次)
-  page(numbering: "i")[
-    #outline(title: [圖次], target: figure.where(kind: image))
-  ]
+    page(numbering: "i")[
+      #outline(title: [#toc-title], depth: 3)
+    ]
 
-  // 8. List of tables (表次)
-  page(numbering: "i")[
-    #outline(title: [表次], target: figure.where(kind: table))
-  ]
+    // 7. List of figures (圖次)
+    page(numbering: "i")[
+      #outline(title: [#lof-title], target: figure.where(kind: image))
+    ]
+
+    // 8. List of tables (表次)
+    page(numbering: "i")[
+      #outline(title: [#lot-title], target: figure.where(kind: table))
+    ]
+  }
 
   // ================================================================
   // Main matter (論文本文)

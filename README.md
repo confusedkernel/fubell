@@ -63,6 +63,7 @@ fubell/
   advisor: (zh: "陳大文 博士", en: "Da-Wen Chen, Ph.D."),
   student-id: "R12345678",
   degree: "master", // or "phd"
+  lang: "zh", // or "en" — controls outline titles and document language
   date: (year-zh: "113", year-en: "2024", month-zh: "6", month-en: "June"),
   keywords: (
     zh: ("關鍵字一", "關鍵字二"),
@@ -79,6 +80,10 @@ fubell/
 
 #include "content/chapters/introduction.typ"
 ```
+
+## Language
+
+The `lang` option (default `"zh"`) controls the document language and structural titles (Table of Contents, List of Figures, List of Tables). Set `lang: "en"` for English headings. Cover and certification pages remain bilingual regardless of this setting.
 
 ## Fonts
 
