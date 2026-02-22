@@ -1,10 +1,8 @@
-# Fubell
+# Fubell 🔔
 
-A [Typst](https://typst.app) thesis template for **National Taiwan University** (國立臺灣大學).
+An unofficial [Typst](https://typst.app) thesis template for **National Taiwan University** (國立臺灣大學).
 
-Inspired by the [ntu-thesis](https://github.com/tzhuan/ntu-thesis) LaTeX template.
-
-The project name is a reference to Fu Bell (傅鐘) in NTU.
+Inspired by the [ntu-thesis](https://github.com/tzhuan/ntu-thesis) LaTeX template and follows the official formatting guidelines. The project is named after the iconic Fu Bell on campus.
 
 ## Quick Start
 
@@ -105,6 +103,8 @@ Times New Roman and 標楷體 are proprietary fonts that are **not available** o
 
 The output will look very similar but not byte-identical to a local build with the proprietary fonts installed. For official submission, it is recommended to **compile locally with Times New Roman and 標楷體 installed**.
 
+If any fallback fonts are missing, you will likely see warnings during compilation. Please ignore them as long as the document renders correctly.
+
 ## License
 
-[MIT-0](LICENSE) — use freely, no attribution required.
+[MIT](LICENSE)

@@ -21,7 +21,7 @@
     #v(1.5em)
 
     #set align(left)
-    #set par(first-line-indent: 2em, leading: 1.5em)
+    #set par(first-line-indent: 2em, leading: 1.5em, justify: true)
     #content
 
     #v(2em)

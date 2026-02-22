@@ -28,14 +28,10 @@
 
     #align(center)[
       #text(size: 24pt)[
-        #set par(leading: 0.5em)
         #university.zh #degree-label 學位論文
       ]
 
-      #v(0.3em)
-
       #text(size: 26pt, weight: "bold")[
-        #set par(leading: 0.5em)
         口試委員會審定書
       ]
     ]
@@ -53,7 +49,7 @@
 
 
     #set text(size: 16pt)
-    #set par(first-line-indent: 2em, leading: 0.5em)
+    #set par(first-line-indent: 2em, leading: 0.5em, justify: true)
     本論文係#author.zh 君（#student-id）在#university.zh #institute.zh 完成之#degree-label 學位論文，於民國#date.year-zh 年#date.month-zh 月承下列考試委員審查通過及口試及格，特此證明
 
     #v(1fr)
