@@ -35,7 +35,7 @@ This roadmap is ordered by **priority first** and **difficulty second**.
 | --- | --- | --- |
 | Optional insertion of external certification PDF | Medium | Replace auto-generated page with scanned PDF |
 | Appendix helpers and appendix numbering presets | Medium | `#appendix()` convenience function |
-| Spacing presets (`double`, `1.5`, `single`) aligned to NTU practice | Low | Expose via `thesis()` parameter |
+| ~~Spacing presets (`double`, `1.5`, `single`) aligned to NTU practice~~ | Low | Done in v0.1.0 — auto per `lang` |
 | Better CJK/Latin font fallback diagnostics and documentation | Medium | Warn on missing fonts |
 | Front-matter fine-tuning (TOC inclusion policy per section) | Medium | Toggle which lists appear |
 | Spine text generation (`\makespine` equivalent) | Medium | Vertical spine for bound copies |

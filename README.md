@@ -27,8 +27,8 @@ fubell/
 │   ├── config.typ           # Page geometry, fonts, spacing defaults
 │   ├── cover.typ            # Cover page layout
 │   ├── certification.typ    # Oral defense certification page
-│   ├── abstract-page.typ    # Abstract page (zh/en)
-│   └── acknowledgement-page.typ
+│   ├── front-matter-page.typ # Abstract & acknowledgement pages (zh/en)
+│   └── outline-page.typ     # ToC, List of Figures/Tables
 ├── template/                # Scaffolded into user projects
 │   ├── main.typ             # Thesis entry point (edit this)
 │   ├── refs.bib             # Bibliography
@@ -70,8 +70,8 @@ fubell/
 
   abstract-zh: include "content/abstract-zh.typ",
   abstract-en: include "content/abstract-en.typ",
-  acknowledgement-zh: include "content/acknowledgement-zh.typ",
-  acknowledgement-en: include "content/acknowledgement-en.typ",
+  acknowledgement-zh: include "content/acknowledgement-zh.typ", // optional
+  acknowledgement-en: include "content/acknowledgement-en.typ", // optional
 
   bibliography-file: bibliography("refs.bib"),
 )
@@ -82,6 +82,8 @@ fubell/
 ## Language
 
 The `lang` option (default `"zh"`) controls the document language and structural titles (Table of Contents, List of Figures, List of Tables). Set `lang: "en"` for English headings. Cover and certification pages remain bilingual regardless of this setting.
+
+Line spacing follows NTU guidelines: 1.5 間距 for Chinese (`lang: "zh"`) and double spacing for English (`lang: "en"`).
 
 ## Fonts
 

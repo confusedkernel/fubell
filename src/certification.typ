@@ -5,7 +5,7 @@
 //   - Body paragraph: 16pt/24pt leading, single spaced
 //   - Signature table: 16pt/24pt leading, double spaced
 
-#import "config.typ": font-en, font-zh
+#import "config.typ"
 
 // Helper: an underline blank of a given width, aligned to text baseline.
 #let sig-line(width) = box(width: width, stroke: (bottom: 0.5pt), outset: (bottom: 3pt))[#hide[X]]
@@ -23,12 +23,12 @@
   let degree-label = if degree == "phd" { "博士" } else { "碩士" }
 
   page(numbering: "i", margin: (top: 3cm, bottom: 2cm, left: 3cm, right: 3cm))[
-    #set text(font: font-en + font-zh)
-
+    #show heading.where(level: 1): _ => []
+    #heading(level: 1, numbering: none)[口試委員會審定書]
 
     #align(center)[
       #text(size: 24pt)[
-        #university.zh #degree-label 學位論文
+        #university.zh#degree-label\學位論文
       ]
 
       #text(size: 26pt, weight: "bold")[
@@ -55,7 +55,6 @@
     #v(1fr)
 
 
-    #set text(size: 16pt)
     #set par(first-line-indent: 0em)
 
 
@@ -66,18 +65,19 @@
 
     #v(0.5em)
 
-
     #for _ in range(committee-count) {
-      v(1em)
+      v(0.5em)
       h(1fr)
       sig-line(5cm)
       h(1.5cm)
       sig-line(5cm)
     }
 
-    #v(1.5em)
+    #v(1em)
 
     // Department chair
     所#h(1em)長：#h(1fr)#sig-line(11.5cm)
+
+    #v(2em)
   ]
 }

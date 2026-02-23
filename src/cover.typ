@@ -4,7 +4,7 @@
 //   - All lines centered, 1.5x line height
 //   - Chinese: 18pt 楷書; English: sizes vary (see below)
 
-#import "config.typ": font-zh, font-en
+#import "config.typ"
 
 #let cover-page(
   university: (zh: "", en: ""),
@@ -17,18 +17,17 @@
   date: (year-zh: "", year-en: "", month-zh: "", month-en: ""),
 ) = {
   let degree-label-zh = if degree == "phd" { "博士" } else { "碩士" }
-  let degree-label-en = if degree == "phd" { "Doctoral Dissertation" } else { "Master's Thesis" }
+  let degree-label-en = if degree == "phd" { "Doctoral Dissertation" } else { "Master Thesis" }
 
   page(numbering: none, margin: (top: 4cm, bottom: 3cm, left: 3cm, right: 3cm))[
     #set align(center)
-    #set text(font: font-en + font-zh)
     #set par(leading: 1.5em)
 
     // Line 1: 國立臺灣大學○○學院○○系(所) — 18pt 楷書
-    #text(size: 18pt)[#university.zh #college.zh #institute.zh]
+    #text(size: 18pt)[#university.zh#college.zh#institute.zh]
 
     // Line 2: 碩(博)士論文 — 18pt 楷書
-    #text(size: 18pt)[#degree-label-zh 論文]
+    #text(size: 18pt)[#degree-label-zh​論文]
 
     // Line 3: Department or Graduate Institute of ○○ — 14pt TNR
     #text(size: 14pt)[#institute.en]
@@ -64,7 +63,7 @@
     #text(size: 18pt)[指導教授：#advisor.zh]
 
     // Advisor (English) — 18pt TNR
-    #text(size: 18pt)[#advisor.en]
+    #text(size: 18pt)[Advisor: #advisor.en]
 
     #v(1fr)
 

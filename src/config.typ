@@ -2,8 +2,6 @@
 // Based on 國立臺灣大學碩博士學位論文格式規範 (112.10.20)
 
 // Page layout
-#let page-width = 210mm
-#let page-height = 297mm
 #let margin-top = 3cm
 #let margin-bottom = 2cm
 #let margin-left = 3cm
@@ -18,7 +16,8 @@
 #let font-en = ("Times New Roman", "TeX Gyre Termes", "STIX Two Text")
 
 // Chinese text
-#let font-zh = ("BiauKaiTC", "DFKai-SB", "TW-MOE-Std-Kai", "Kaiti TC", "Kaiti SC")
+#let font-zh = ("Kaiti TC", "BiauKai TC", "DFKai-SB", "TW-MOE-Std-Kai")
 
 // Spacing
-#let line-spacing = 1.5em
+#let line-spacing-zh = 1.5em  // 1.5 間距
+#let line-spacing-en = 2em    // 雙行間距

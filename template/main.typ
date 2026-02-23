@@ -6,12 +6,11 @@
 // When published, change the import to:
 //   #import "@preview/fubell:0.1.0": thesis
 
-// #import "@preview/fubell:0.1.0": thesis
 #import "../lib.typ": thesis
 
 #show: thesis.with(
   university: (zh: "國立臺灣大學", en: "National Taiwan University"),
-  college: (zh: "文學院", en: "College of Arts"),
+  college: (zh: "文學院", en: "College of Liberal Arts"),
   institute: (zh: "語言學研究所", en: "Graduate Institute of Linguistics"),
   title: (
     zh: "以 Typst 排版系統撰寫國立臺灣大學論文",
@@ -22,10 +21,10 @@
   student-id: "R12345678",
   degree: "master",
   date: (
-    year-zh: "113",
-    year-en: "2024",
-    month-zh: "6",
-    month-en: "June",
+    year-zh: "115",
+    year-en: "2026",
+    month-zh: "2",
+    month-en: "February",
   ),
   keywords: (
     zh: ("排版", "論文模板", "Typst"),
@@ -38,7 +37,10 @@
   acknowledgement-en: include "sections/acknowledgement-en.typ",
 
   bibliography-file: bibliography("bibliography/refs.bib"),
+  watermark: "assets/watermark.pdf", // or download from https://www.lib.ntu.edu.tw/doc/CL/watermark.pdf
 )
+
+#set par(justify: true)
 
 // Main chapters
 #include "sections/chapters/introduction.typ"
