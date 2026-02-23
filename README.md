@@ -96,6 +96,8 @@ The font fallback chains are:
 | English | Times New Roman → TeX Gyre Termes → STIX Two Text |
 | Chinese | BiauKaiTC → DFKai-SB → TW-MOE-Std-Kai → Kaiti TC → Kaiti SC |
 
+Currently bold/italic do not work for Chinese fonts, workarounds with `stroke` and `skew` are being considered.
+
 ### Caveats — Typst web app
 
 Times New Roman and 標楷體 are proprietary fonts that are **not available** on the Typst web app. The template will automatically fall back to:
@@ -106,6 +108,11 @@ Times New Roman and 標楷體 are proprietary fonts that are **not available** o
 The output will look very similar but not byte-identical to a local build with the proprietary fonts installed. For official submission, it is recommended to **compile locally with Times New Roman and 標楷體 installed**.
 
 If any fallback fonts are missing, you will likely see warnings during compilation. Please ignore them as long as the document renders correctly.
+
+## Contributing
+
+Issues and pull requests are welcome! If you spot a formatting bug, have a feature idea, or want to pick up something from the [roadmap](ROADMAP.md) — please go for it :)
+Contributions that implement new features are especially appreciated.
 
 ## License
 
