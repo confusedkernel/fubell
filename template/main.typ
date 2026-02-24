@@ -38,9 +38,8 @@
 
   bibliography-file: bibliography("bibliography/refs.bib"),
   watermark: "assets/watermark.pdf", // or download from https://www.lib.ntu.edu.tw/doc/CL/watermark.pdf
+  lang: "zh"
 )
-
-#set par(justify: true)
 
 // Main chapters
 #include "sections/chapters/introduction.typ"

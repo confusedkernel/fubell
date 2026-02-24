@@ -6,5 +6,5 @@
   #set outline.entry(fill: repeat[.])
   #align(center, text(size: config.heading-size, weight: "bold")[#title])
   #v(1.5em)
-  #outline(title: none, ..args)
+  #outline(title: none, indent: 2em, ..args)
 ]

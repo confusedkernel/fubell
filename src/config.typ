@@ -16,7 +16,7 @@
 #let font-en = ("Times New Roman", "TeX Gyre Termes", "STIX Two Text")
 
 // Chinese text
-#let font-zh = ("Kaiti TC", "BiauKai TC", "DFKai-SB", "TW-MOE-Std-Kai")
+#let font-zh = ("Kaiti TC", "BiauKaiTC", "DFKai-SB", "TW-MOE-Std-Kai")
 
 // Spacing
 #let line-spacing-zh = 1.5em  // 1.5 間距

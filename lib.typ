@@ -31,7 +31,6 @@
   committee-count: 4,
   bibliography-file: none,
   watermark: none, // path to watermark image (e.g. "watermark.pdf")
-  // -- Body --
   body,
 ) = {
   // -- Document metadata --
@@ -61,7 +60,8 @@
     lang: lang,
     ..if lang == "zh" { (region: "tw") },
   )
-  set par(leading: if lang == "zh" { config.line-spacing-zh } else { config.line-spacing-en })
+  let _leading = if lang == "zh" { config.line-spacing-zh } else { config.line-spacing-en }
+  set par(leading: _leading, spacing: _leading, first-line-indent: (amount: 2em, all: true), justify: true)
 
   // -- Heading style --
   let chapter-prefix = if lang == "zh" { "第" } else { "Chapter " }
@@ -75,22 +75,33 @@
       numbering("1.1", ..nums) + " "
     }
   }
+
   set heading(numbering: thesis-numbering)
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
-    v(1em)
+    v(1.5em)
     align(center, text(size: config.heading-size, weight: "bold", font: config.font-en + config.font-zh)[
       #if it.numbering != none {
         counter(heading).display(thesis-numbering)
       }
       #it.body
     ])
-    v(0.8em)
+    v(1.2em)
   }
   show heading.where(level: 2): it => {
-    v(0.8em)
+    v(0.5 * _leading)
     text(size: config.subheading-size, weight: "bold", font: config.font-en + config.font-zh)[#it]
-    v(0.5em)
+    v(0.5 * _leading)
+  }
+  show heading.where(level: 3): it => {
+    v(0.5 * _leading)
+    text(size: config.body-size, weight: "bold", font: config.font-en + config.font-zh)[#it]
+    v(0.5 * _leading)
+  }
+  show heading.where(level: 4): it => {
+    v(0.5 * _leading)
+    text(size: config.body-size, weight: "bold", font: config.font-en + config.font-zh)[#it]
+    v(0.5 * _leading)
   }
 
   // ================================================================
