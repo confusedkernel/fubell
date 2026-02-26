@@ -4,8 +4,6 @@
 //   - All lines centered, 1.5x line height
 //   - Chinese: 18pt 楷書; English: sizes vary (see below)
 
-#import "config.typ"
-
 #let cover-page(
   university: (zh: "", en: ""),
   college: (zh: "", en: ""),
@@ -27,7 +25,7 @@
     #text(size: 18pt)[#university.zh#college.zh#institute.zh]
 
     // Line 2: 碩(博)士論文 — 18pt 楷書
-    #text(size: 18pt)[#degree-label-zh​論文]
+    #text(size: 18pt)[#(degree-label-zh)論文]
 
     // Line 3: Department or Graduate Institute of ○○ — 14pt TNR
     #text(size: 14pt)[#institute.en]
