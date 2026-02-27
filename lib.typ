@@ -60,13 +60,14 @@
     lang: lang,
     ..if lang == "zh" { (region: "tw") },
   )
-  let _leading = if lang == "zh" { config.line-spacing-zh } else { config.line-spacing-en }
+  let pick-lang = (zh, en) => if lang == "zh" { zh } else { en }
+  let _leading = pick-lang(config.line-spacing-zh, config.line-spacing-en)
   set par(leading: _leading, spacing: _leading, first-line-indent: (amount: 2em, all: true), justify: true)
 
   // -- Heading style --
-  let chapter-prefix = if lang == "zh" { "第" } else { "Chapter " }
-  let chapter-suffix = if lang == "zh" { "章 " } else { " " }
-  let chapter-num-fmt = if lang == "zh" { "一" } else { "1" }
+  let chapter-prefix = pick-lang("第", "Chapter ")
+  let chapter-suffix = pick-lang("章 ", " ")
+  let chapter-num-fmt = pick-lang("一", "1")
   let thesis-numbering = (..nums) => {
     let nums = nums.pos()
     if nums.len() == 1 {
@@ -158,9 +159,9 @@
 
   // 6. Table of contents, list of figures, list of tables
   {
-    let toc-title = if lang == "zh" { "目錄" } else { "Table of Contents" }
-    let lof-title = if lang == "zh" { "圖目錄" } else { "List of Figures" }
-    let lot-title = if lang == "zh" { "表目錄" } else { "List of Tables" }
+    let toc-title = pick-lang("目錄", "Table of Contents")
+    let lof-title = pick-lang("圖目錄", "List of Figures")
+    let lot-title = pick-lang("表目錄", "List of Tables")
 
     outline-page(toc-title, depth: 3)
     outline-page(lof-title, target: figure.where(kind: image))
@@ -182,7 +183,7 @@
   // ================================================================
 
   if bibliography-file != none {
-    let bib-title = if lang == "zh" { "參考文獻" } else { "References" }
+    let bib-title = pick-lang("參考文獻", "References")
     pagebreak(weak: true)
     set bibliography(title: bib-title)
     show bibliography: set heading(numbering: none)
