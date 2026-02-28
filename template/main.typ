@@ -6,7 +6,7 @@
 // When published, change the import to:
 //   #import "@preview/fubell:0.1.0": thesis
 
-#import "../lib.typ": thesis
+#import "@preview/fubell:0.1.0": thesis
 
 #show: thesis.with(
   university: (zh: "國立臺灣大學", en: "National Taiwan University"),
@@ -37,8 +37,8 @@
   acknowledgement-en: include "sections/acknowledgement-en.typ",
 
   bibliography-file: bibliography("bibliography/refs.bib"),
-  watermark: "assets/watermark.pdf", // or download from https://www.lib.ntu.edu.tw/doc/CL/watermark.pdf
-  lang: "zh"
+  watermark: "assets/watermark.png", // convert from https://www.lib.ntu.edu.tw/doc/CL/watermark.pdf
+  lang: "zh",
 )
 
 // Main chapters

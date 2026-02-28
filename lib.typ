@@ -30,7 +30,7 @@
   lang: "zh", // "zh" or "en" — controls outline titles and document language
   committee-count: 4,
   bibliography-file: none,
-  watermark: none, // path to watermark image (e.g. "watermark.pdf")
+  watermark: none, // path to watermark image (e.g. "watermark.png")
   body,
 ) = {
   // -- Document metadata --

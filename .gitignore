@@ -1,2 +1,4 @@
 *.pdf
 thumbnail.png
+release/
+typst-publish.sh
