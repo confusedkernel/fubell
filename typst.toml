@@ -8,8 +8,7 @@ license = "MIT"
 description = "Thesis template for National Taiwan University."
 repository = "https://github.com/confusedkernel/fubell"
 keywords = ["thesis", "NTU", "National Taiwan University", "CJK"]
-categories = ["thesis"]
-disciplines = ["computer-science", "engineering"]
+categories = ["paper", "thesis"]
 
 [template]
 path = "template"
