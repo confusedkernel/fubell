@@ -1,7 +1,7 @@
 // Fubell — NTU thesis template for Typst.
 //
 // Usage:
-//   #import "@preview/fubell:0.1.0": thesis
+//   #import "@preview/fubell:0.1.0": thesis, appendix
 //   #show: thesis.with( ... )
 
 #import "src/config.typ"
@@ -9,6 +9,7 @@
 #import "src/certification.typ": certification-page
 #import "src/front-matter-page.typ": front-matter-page
 #import "src/outline-page.typ": outline-page
+#import "src/appendix.typ": appendix
 
 #let thesis(
   university: (zh: "國立臺灣大學", en: "National Taiwan University"),
@@ -93,7 +94,7 @@
     v(1.5em)
     align(center, text(size: config.heading-size, weight: "bold", font: config.font-en + config.font-zh)[
       #if it.numbering != none {
-        counter(heading).display(thesis-numbering)
+        counter(heading).display(it.numbering)
       }
       #it.body
     ])

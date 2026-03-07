@@ -4,12 +4,14 @@
 //   typst compile main.typ
 //
 // When using the published version, change the import to:
-//   #import "@preview/fubell:0.1.0": thesis
+//   #import "@preview/fubell:0.1.0": thesis, appendix
 //
 // If cloned from source, use local import for development
-//   #import "../lib.typ": thesis
+//   #import "../lib.typ": thesis, appendix
 
-#import "@preview/fubell:0.1.0": thesis
+// #import "@preview/fubell:0.1.0": thesis, appendix
+
+#import "../lib.typ": thesis, appendix
 
 #show: thesis.with(
   university: (zh: "國立臺灣大學", en: "National Taiwan University"),
@@ -47,3 +49,7 @@
 
 // Main chapters
 #include "sections/chapters/introduction.typ"
+
+// Appendices
+#show: appendix
+#include "sections/appendices/appendix-a.typ"

@@ -31,13 +31,14 @@ You can use Fubell directly on the Typst web app (no local CLI required):
 
 ```text
 fubell/
-├── lib.typ                  # Package entrypoint (exports `thesis`)
+├── lib.typ                  # Package entrypoint (exports `thesis`, `appendix`)
 ├── src/
 │   ├── config.typ           # Page geometry, fonts, spacing defaults
 │   ├── cover.typ            # Cover page layout
 │   ├── certification.typ    # Oral defense certification page
 │   ├── front-matter-page.typ # Abstract & acknowledgement pages (zh/en)
-│   └── outline-page.typ     # ToC, List of Figures/Tables
+│   ├── outline-page.typ     # ToC, List of Figures/Tables
+│   └── appendix.typ         # Appendix numbering helper
 ├── template/                # Scaffolded into user projects
 │   ├── main.typ             # Thesis entry point (edit this)
 │   ├── refs.bib             # Bibliography
@@ -56,7 +57,7 @@ fubell/
 ## Usage
 
 ```typst
-#import "@preview/fubell:0.1.0": thesis
+#import "@preview/fubell:0.1.0": thesis, appendix
 
 #show: thesis.with(
   university: (zh: "國立臺灣大學", en: "National Taiwan University"),
@@ -88,6 +89,27 @@ fubell/
 )
 
 #include "content/chapters/introduction.typ"
+
+// Appendices — switches numbering to "Appendix A" / "附錄A"
+#show: appendix
+= Survey Data       // → "附錄A Survey Data" (zh) or "Appendix A Survey Data" (en)
+== Raw Results      // → "A.1 Raw Results"
+```
+
+## Appendices
+
+Use `#show: appendix` after your main chapters to switch heading numbering to appendix style. The prefix adapts to the document language:
+
+| `lang` | Level 1 | Level 2+ |
+|--------|---------|----------|
+| `"zh"` | 附錄A   | A.1      |
+| `"en"` | Appendix A | A.1   |
+
+```typst
+// after your last chapter
+#show: appendix
+= Supplementary Data
+== Experiment Details
 ```
 
 ## Watermark (Optional)
