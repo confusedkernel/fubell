@@ -9,8 +9,6 @@
 // If cloned from source, use local import for development
 //   #import "../lib.typ": thesis, appendix
 
-// #import "@preview/fubell:0.1.0": thesis, appendix
-
 #import "../lib.typ": thesis, appendix
 
 #show: thesis.with(

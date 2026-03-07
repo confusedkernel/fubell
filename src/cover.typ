@@ -18,7 +18,7 @@
   let degree-label-zh = if degree == "phd" { "博士" } else { "碩士" }
   let degree-label-en = if degree == "phd" { "Doctoral Dissertation" } else { "Master Thesis" }
 
-  page(numbering: none, margin: (top: 4cm, bottom: 3cm, left: 3cm, right: 3cm))[
+  page(numbering: none, margin: (top: 4cm, bottom: 3cm, left: 3cm, right: 3cm), footer: none)[
     #set align(center)
     #set par(leading: 1.5em)
 

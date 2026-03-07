@@ -62,6 +62,9 @@
         watermark-content
       }))
     },
+    ..if doi != none {
+      (footer: place(right, dx: 2cm, text(size: 10pt)[#doi]))
+    },
   )
 
   // -- Typography --
