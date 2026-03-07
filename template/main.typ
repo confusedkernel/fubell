@@ -3,8 +3,11 @@
 // Compile with:
 //   typst compile main.typ
 //
-// When published, change the import to:
+// When using the published version, change the import to:
 //   #import "@preview/fubell:0.1.0": thesis
+//
+// If cloned from source, use local import for development
+//   #import "../lib.typ": thesis
 
 #import "@preview/fubell:0.1.0": thesis
 
@@ -38,6 +41,7 @@
 
   bibliography-file: bibliography("bibliography/refs.bib"),
   watermark: none, // optional: set to image("assets/watermark.png") after adding it locally
+  doi: none, // optional DOI string
   lang: "zh",
 )
 

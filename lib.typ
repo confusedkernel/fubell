@@ -31,6 +31,7 @@
   committee-count: 4,
   bibliography-file: none,
   watermark: none, // optional watermark image, e.g. image("assets/watermark.png")
+  doi: none, // optional DOI string, e.g. "doi:10.6342/NTU2024XXXXX"
   body,
 ) = {
   let watermark-content = if type(watermark) == str or type(watermark) == bytes {
@@ -128,6 +129,7 @@
     advisor: advisor,
     degree: degree,
     date: date,
+    doi: doi,
   )
 
   // 2. Certification page (口試委員會審定書)

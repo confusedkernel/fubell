@@ -84,6 +84,7 @@ fubell/
 
   bibliography-file: bibliography("refs.bib"),
   watermark: none, // optional: e.g. image("assets/watermark.png") (user-provided)
+  doi: none, // optional DOI string, e.g. "doi:10.6342/NTU2024XXXXX"
 )
 
 #include "content/chapters/introduction.typ"

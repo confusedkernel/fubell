@@ -13,6 +13,7 @@
   advisor: (zh: "", en: ""),
   degree: "master",
   date: (year-zh: "", year-en: "", month-zh: "", month-en: ""),
+  doi: none,
 ) = {
   let degree-label-zh = if degree == "phd" { "博士" } else { "碩士" }
   let degree-label-en = if degree == "phd" { "Doctoral Dissertation" } else { "Master Thesis" }
@@ -70,5 +71,10 @@
 
     // Date (English) — 18pt TNR
     #text(size: 18pt)[#date.month-en, #date.year-en]
+
+    // DOI
+    #if doi != none {
+      place(bottom + right, dx: 2cm, dy: 2cm, text(size: 10pt)[#doi])
+    }
   ]
 }

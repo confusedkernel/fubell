@@ -44,7 +44,7 @@ This roadmap is ordered by **priority first** and **difficulty second**.
 
 | Item | Difficulty | Notes |
 | --- | --- | --- |
-| Watermark and DOI toggles | Medium | Overlay NTU watermark on pages |
+| Watermark and DOI toggles | Medium | Done |
 | Config validation with clear error messages for missing metadata | Medium | Panic with helpful messages |
 | Additional bibliography/citation style presets | Medium | APA, IEEE, etc. |
 | Layout regression suite (smoke compiles + visual diff strategy) | High | CI-friendly testing |
