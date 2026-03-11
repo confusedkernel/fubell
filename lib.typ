@@ -29,6 +29,9 @@
   acknowledgement-en: none,
   // -- Options --
   lang: "zh", // "zh" or "en" — controls outline titles and document language
+  font-profile: "submission", // "submission", "web", or "portable"
+  font-en: auto,
+  font-zh: auto,
   committee-count: 4,
   bibliography-file: none,
   watermark: none, // optional watermark image, e.g. image("assets/watermark.png")
@@ -40,12 +43,22 @@
   } else {
     watermark
   }
+  let profile-fonts = config.resolve-fonts(font-profile)
+  let resolved-font-en = if font-en == auto { profile-fonts.en } else { font-en }
+  let resolved-font-zh = if font-zh == auto { profile-fonts.zh } else { font-zh }
+  let as-font-list = value => if type(value) == array { value } else { (value,) }
+  let text-fonts = as-font-list(resolved-font-en) + as-font-list(resolved-font-zh)
 
   // -- Document metadata --
   set document(
     title: title.en,
     author: author.en,
   )
+  [#metadata((
+    profile: font-profile,
+    en: resolved-font-en,
+    zh: resolved-font-zh,
+  )) <fubell-font-config>]
 
   // -- Page setup --
   set page(
@@ -70,7 +83,7 @@
   // -- Typography --
   set text(
     size: config.body-size,
-    font: config.font-en + config.font-zh,
+    font: text-fonts,
     lang: lang,
     ..if lang == "zh" { (region: "tw") },
   )
@@ -95,7 +108,7 @@
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
     v(1.5em)
-    align(center, text(size: config.heading-size, weight: "bold", font: config.font-en + config.font-zh)[
+    align(center, text(size: config.heading-size, weight: "bold")[
       #if it.numbering != none {
         counter(heading).display(it.numbering)
       }
@@ -105,17 +118,17 @@
   }
   show heading.where(level: 2): it => {
     v(0.5 * _leading)
-    text(size: config.subheading-size, weight: "bold", font: config.font-en + config.font-zh)[#it]
+    text(size: config.subheading-size, weight: "bold")[#it]
     v(0.5 * _leading)
   }
   show heading.where(level: 3): it => {
     v(0.5 * _leading)
-    text(size: config.body-size, weight: "bold", font: config.font-en + config.font-zh)[#it]
+    text(size: config.body-size, weight: "bold")[#it]
     v(0.5 * _leading)
   }
   show heading.where(level: 4): it => {
     v(0.5 * _leading)
-    text(size: config.body-size, weight: "bold", font: config.font-en + config.font-zh)[#it]
+    text(size: config.body-size, weight: "bold")[#it]
     v(0.5 * _leading)
   }
 

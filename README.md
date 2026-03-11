@@ -15,7 +15,7 @@ typst compile main.typ
 Or clone this repository and compile the example directly:
 
 ```bash
-typst compile template/main.typ
+typst compile --root . template/main.typ
 ```
 
 ## Typst Web App Usage
@@ -26,6 +26,7 @@ You can use Fubell directly on the Typst web app (no local CLI required):
 2. In `main.typ`, import `@preview/fubell:0.1.0` and configure `#show: thesis.with(...)` (see the Usage snippet below).
 3. Add files for any `include` paths you use, or replace those `include` lines with inline content.
 4. Keep `watermark: none` (default), or upload your own `assets/watermark.png` and set `watermark: image("assets/watermark.png")`.
+5. Set `font-profile: "web"` for cleaner fallback behavior on Typst web app.
 
 ## Project Structure
 
@@ -72,6 +73,9 @@ fubell/
   student-id: "R12345678",
   degree: "master", // or "phd"
   lang: "zh", // or "en" — controls outline titles and document language
+  font-profile: "submission", // or "web" / "portable"
+  // font-en: ("Times New Roman", "TeX Gyre Termes"), // optional override
+  // font-zh: ("BiauKaiTC", "TW-MOE-Std-Kai"), // optional override
   date: (year-zh: "113", year-en: "2024", month-zh: "6", month-en: "June"),
   keywords: (
     zh: ("關鍵字一", "關鍵字二"),
@@ -130,16 +134,17 @@ Line spacing follows NTU guidelines: 1.5 間距 for Chinese (`lang: "zh"`) and d
 
 ## Fonts
 
-The template uses **Times New Roman** for English text and **標楷體 (BiauKai)** for Chinese text, matching NTU's formatting requirements.
+The template supports font profiles so users can choose between submission-accurate fonts and web/CI-friendly fallbacks.
 
-The font fallback chains are:
+| Profile | Use case | English stack | Chinese stack |
+|---------|----------|---------------|---------------|
+| `"submission"` (default) | Local submission build | Times New Roman → TeX Gyre Termes → STIX Two Text | BiauKaiTC → DFKai-SB → TW-MOE-Std-Kai → Kaiti TC → Kaiti SC |
+| `"web"` | Typst web app | TeX Gyre Termes → STIX Two Text → Times New Roman | TW-MOE-Std-Kai → Kaiti TC → Kaiti SC → BiauKaiTC → DFKai-SB |
+| `"portable"` | CI / reproducible open-font-first build | Libertinus Serif → New Computer Modern → Times New Roman | TW-MOE-Std-Kai → Noto Serif CJK TC → Noto Serif TC → BiauKaiTC |
 
-| Purpose | Fallback order |
-|---------|---------------|
-| English | Times New Roman → TeX Gyre Termes → STIX Two Text |
-| Chinese | BiauKaiTC → DFKai-SB → TW-MOE-Std-Kai → Kaiti TC → Kaiti SC |
+You can also bypass profiles and set `font-en` / `font-zh` directly in `thesis.with(...)`.
 
-Currently bold/italic do not work for Chinese fonts, workarounds with `stroke` and `skew` are being considered.
+Currently bold/italic do not work for many Chinese Kai fonts; workarounds with `stroke` and `skew` are being considered.
 
 ### Caveats — Typst web app
 
@@ -150,7 +155,35 @@ Times New Roman and 標楷體 are proprietary fonts that are **not available** o
 
 The output will look very similar but not byte-identical to a local build with the proprietary fonts installed. For official submission, it is recommended to **compile locally with Times New Roman and 標楷體 installed**.
 
-If any fallback fonts are missing, you will likely see warnings during compilation. Please ignore them as long as the document renders correctly.
+For web projects, prefer `font-profile: "web"`.
+
+### Font diagnostics (local CLI)
+
+1. Check the effective font configuration selected by the template:
+
+   ```bash
+   typst query --root . main.typ "<fubell-font-config>" --one --format yaml
+   ```
+
+2. See font warnings in a compact format:
+
+   ```bash
+   typst query --root . main.typ "<heading>" --field body --diagnostic-format short
+   ```
+
+3. Run a strict fallback check with system fonts disabled:
+
+   ```bash
+   typst query --root . main.typ "<heading>" --field body --diagnostic-format short --ignore-system-fonts
+   ```
+
+4. Inspect installed font families on your machine:
+
+   ```bash
+   typst fonts
+   ```
+
+If you see `unknown font family` warnings, either install that font locally or switch `font-profile` / `font-en` / `font-zh` to fonts available in your environment.
 
 ## Contributing
 

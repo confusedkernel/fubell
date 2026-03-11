@@ -23,6 +23,7 @@
   advisor: (zh: "陳大文 博士", en: "Da-Wen Chen, Ph.D."),
   student-id: "R12345678",
   degree: "master",
+  font-profile: "submission", // switch to "web" on Typst web app
   date: (
     year-zh: "115",
     year-en: "2026",
