@@ -90,6 +90,7 @@ fubell/
   bibliography-file: bibliography("refs.bib"),
   watermark: none, // optional: e.g. image("assets/watermark.png") (user-provided)
   doi: none, // optional DOI string, e.g. "doi:10.6342/NTU2024XXXXX"
+  // certification-pdf: read("cert.pdf", encoding: none), // optional: replace auto page with scanned PDF
 )
 
 #include "content/chapters/introduction.typ"
@@ -131,6 +132,33 @@ If you want to add the NTU watermark:
 The `lang` option (default `"zh"`) controls the document language and structural titles (Table of Contents, List of Figures, List of Tables). Set `lang: "en"` for English headings. Cover and certification pages remain bilingual regardless of this setting.
 
 Line spacing follows NTU guidelines: 1.5 間距 for Chinese (`lang: "zh"`) and double spacing for English (`lang: "en"`).
+
+## External Certification PDF (Optional)
+
+By default the template auto-generates the 口試委員會審定書 (certification page) with signature blanks. After your oral defense, you can replace it with a scanned PDF of the signed page:
+
+```typst
+#show: thesis.with(
+  // ... other options ...
+  certification-pdf: read("certification-scan.pdf", encoding: none),
+  certification-pdf-page: 1,       // page to embed (default: 1)
+  certification-pdf-fit: "contain", // "contain", "cover", or "stretch"
+)
+```
+
+When `certification-pdf` is set:
+
+- The auto-generated certification page is skipped entirely.
+- The scanned PDF is rendered **full-bleed** (zero margins, no watermark, no DOI footer, no page number overlay).
+- The TOC entry for 口試委員會審定書 is still emitted so the table of contents remains correct.
+
+When `certification-pdf` is `none` (default), the other two options (`certification-pdf-page`, `certification-pdf-fit`) are silently ignored.
+
+### Caveats
+
+- Typst's PDF-as-image feature requires the source PDF version to be ≤ the export target version. If compilation fails, re-export your scanned PDF as PDF 1.7 or lower.
+- PDF-as-image is **not supported** when exporting with PDF/A or PDF/UA standards enabled.
+- Tags and accessibility metadata from the source PDF are not preserved.
 
 ## Fonts
 

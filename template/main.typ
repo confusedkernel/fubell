@@ -43,6 +43,9 @@
   bibliography-file: bibliography("bibliography/refs.bib"),
   watermark: none, // optional: set to image("assets/watermark.png") after adding it locally
   doi: none, // optional DOI string
+  // certification-pdf: read("certification-scan.pdf", encoding: none), // optional: replace auto-generated certification page with scanned PDF
+  // certification-pdf-page: 1,       // which page of the PDF to embed (default: 1)
+  // certification-pdf-fit: "contain", // "contain", "cover", or "stretch" (default: "contain")
   lang: "zh",
 )
 

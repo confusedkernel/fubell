@@ -6,7 +6,7 @@
 
 #import "src/config.typ"
 #import "src/cover.typ": cover-page
-#import "src/certification.typ": certification-page
+#import "src/certification.typ": certification-page, certification-page-from-pdf
 #import "src/front-matter-page.typ": front-matter-page
 #import "src/outline-page.typ": outline-page
 #import "src/appendix.typ": appendix
@@ -36,6 +36,9 @@
   bibliography-file: none,
   watermark: none, // optional watermark image, e.g. image("assets/watermark.png")
   doi: none, // optional DOI string, e.g. "doi:10.6342/NTU2024XXXXX"
+  certification-pdf: none, // optional: scanned certification PDF bytes, e.g. read("cert.pdf", encoding: none)
+  certification-pdf-page: 1, // which page of the PDF to embed
+  certification-pdf-fit: "contain", // "contain", "cover", or "stretch"
   body,
 ) = {
   let watermark-content = if type(watermark) == str or type(watermark) == bytes {
@@ -150,16 +153,24 @@
   )
 
   // 2. Certification page (口試委員會審定書)
-  certification-page(
-    university: university,
-    author: author,
-    title: title,
-    institute: institute,
-    student-id: student-id,
-    degree: degree,
-    date: date,
-    committee-count: committee-count,
-  )
+  if certification-pdf != none {
+    certification-page-from-pdf(
+      certification-pdf,
+      pdf-page: certification-pdf-page,
+      fit: certification-pdf-fit,
+    )
+  } else {
+    certification-page(
+      university: university,
+      author: author,
+      title: title,
+      institute: institute,
+      student-id: student-id,
+      degree: degree,
+      date: date,
+      committee-count: committee-count,
+    )
+  }
 
   // 3. Acknowledgements (致謝)
   if acknowledgement-zh != none {

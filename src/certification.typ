@@ -8,6 +8,23 @@
 // Helper: an underline blank of a given width, aligned to text baseline.
 #let sig-line(width) = box(width: width, stroke: (bottom: 0.5pt), outset: (bottom: 3pt))[#hide[X]]
 
+// Render a scanned certification PDF as a full-page image with zero margins.
+// The heading is still emitted (hidden) so the TOC entry is preserved.
+// Watermark and DOI footer are suppressed on this page.
+#let certification-page-from-pdf(
+  source,         // path (string) or bytes of the external PDF
+  pdf-page: 1,    // which page of the PDF to embed
+  fit: "contain", // "contain", "cover", or "stretch"
+) = {
+  page(numbering: "i", margin: 0pt, background: none, footer: none, header: none)[
+    // Hidden heading for TOC entry
+    #show heading.where(level: 1): _ => []
+    #heading(level: 1, numbering: none)[口試委員會審定書]
+
+    #image(source, width: 100%, height: 100%, fit: fit, page: pdf-page)
+  ]
+}
+
 #let certification-page(
   university: (zh: "", en: ""),
   author: (zh: "", en: ""),
