@@ -31,20 +31,22 @@ This roadmap is ordered by **priority first** and **difficulty second**.
 
 ## P1 (Submission readiness) — v0.2.0
 
-| Item | Difficulty | Notes |
+| Item | Difficulty | Status |
 | --- | --- | --- |
-| ~~Optional insertion of external certification PDF~~ | Medium | Done in v0.2.0 — `certification-pdf` option |
-| ~~Appendix helpers and appendix numbering presets~~ | Medium | Done in v0.1.0 — `#appendix()` convenience function |
-| ~~Spacing presets (`double`, `1.5`, `single`) aligned to NTU practice~~ | Low | Done in v0.1.0 — auto per `lang` |
-| ~~Better CJK/Latin font fallback diagnostics and documentation~~ | Medium | Done in v0.1.1 — font profiles + CLI diagnostics guide |
-| Front-matter fine-tuning (TOC inclusion policy per section) | Medium | Toggle which lists appear |
-| Spine text generation (`\makespine` equivalent) | Medium | Vertical spine for bound copies |
+| Optional insertion of external certification PDF | Medium | Done in v0.2.0 — `certification-pdf` option |
+| Appendix helpers and appendix numbering presets | Medium | Done in v0.2.0 — `#show: appendix` |
+| Spacing presets (`double`, `1.5`, `single`) aligned to NTU practice | Low | Done in v0.2.0 — auto per `lang` |
+| Better CJK/Latin font fallback diagnostics and documentation | Medium | Done in v0.2.0 — font profiles + CLI diagnostics guide |
+| Watermark and DOI toggles | Medium | Done in v0.2.0 |
+| Front-matter fine-tuning (TOC inclusion policy per section) | Medium | Open → v0.3.0 |
+| Spine text generation (`\makespine` equivalent) | Medium | Open → v0.3.0 |
 
 ## P2 (Quality and extensibility) — v0.3.0
 
 | Item | Difficulty | Notes |
 | --- | --- | --- |
-| Watermark and DOI toggles | Medium | Done |
+| Per-chapter figure/table/equation numbering | Medium | `圖 1.1` / `表 1.1` / `(1.1)`; currently numbered globally |
+| Skip empty 圖目錄 / 表目錄 pages | Low | A thesis with no figures still gets a blank list page |
 | Config validation with clear error messages for missing metadata | Medium | Panic with helpful messages |
 | Additional bibliography/citation style presets | Medium | APA, IEEE, etc. |
 | Layout regression suite (smoke compiles + visual diff strategy) | High | CI-friendly testing |
@@ -54,14 +56,15 @@ This roadmap is ordered by **priority first** and **difficulty second**.
 
 | Item | Difficulty | Notes |
 | --- | --- | --- |
-| Universe submission assets (thumbnail pipeline, metadata polish) | Medium | Ready for `@preview/fubell` |
+| Universe submission assets (thumbnail pipeline, metadata polish) | Medium | Done in v0.2.0 — `scripts/stage-release.sh` |
 | CI workflow for compile checks against supported Typst versions | Medium | GitHub Actions |
+| Expand the example thesis (figures, tables, equations, cross-references) | Low | Current example exercises none of these |
 | Full bilingual documentation and migration guide | Medium | LaTeX → Typst migration tips |
 | More real-world examples (CS, EE, humanities) | High | Discipline-specific starters |
 
 ## Milestone schedule (proposed)
 
-- **v0.1.0:** Scaffold + MVP (P0) — current
-- **v0.2.0:** Submission readiness (P1)
+- **v0.1.0:** Scaffold + MVP (P0) — released
+- **v0.2.0:** Submission readiness (P1) — current
 - **v0.3.0:** Quality and extensibility (P2)
 - **v1.0.0:** Stable release and Typst Universe publish (P3)

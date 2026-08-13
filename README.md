@@ -7,7 +7,7 @@ Inspired by the [ntu-thesis](https://github.com/tzhuan/ntu-thesis) LaTeX templat
 ## Quick Start
 
 ```bash
-typst init @preview/fubell:0.1.0 my-thesis
+typst init @preview/fubell:0.2.0 my-thesis
 cd my-thesis
 typst compile main.typ
 ```
@@ -23,7 +23,7 @@ typst compile --root . template/main.typ
 You can use Fubell directly on the Typst web app (no local CLI required):
 
 1. Create a new project at <https://typst.app>.
-2. In `main.typ`, import `@preview/fubell:0.1.0` and configure `#show: thesis.with(...)` (see the Usage snippet below).
+2. In `main.typ`, import `@preview/fubell:0.2.0` and configure `#show: thesis.with(...)` (see the Usage snippet below).
 3. Add files for any `include` paths you use, or replace those `include` lines with inline content.
 4. Keep `watermark: none` (default), or upload your own `assets/watermark.png` and set `watermark: image("assets/watermark.png")`.
 5. Set `font-profile: "web"` for cleaner fallback behavior on Typst web app.
@@ -42,14 +42,20 @@ fubell/
 │   └── appendix.typ         # Appendix numbering helper
 ├── template/                # Scaffolded into user projects
 │   ├── main.typ             # Thesis entry point (edit this)
-│   ├── refs.bib             # Bibliography
-│   └── content/
+│   ├── assets/              # Your images, watermark, certification scan
+│   ├── bibliography/
+│   │   └── refs.bib         # Bibliography
+│   └── sections/
 │       ├── abstract-zh.typ
 │       ├── abstract-en.typ
 │       ├── acknowledgement-zh.typ
 │       ├── acknowledgement-en.typ
-│       └── chapters/
-│           └── introduction.typ
+│       ├── chapters/
+│       │   └── introduction.typ
+│       └── appendices/
+│           └── appendix-a.typ
+├── scripts/
+│   └── stage-release.sh     # Builds the Typst Universe submission directory
 ├── typst.toml               # Package manifest
 ├── ROADMAP.md               # Development roadmap
 └── CHANGELOG.md
@@ -58,7 +64,7 @@ fubell/
 ## Usage
 
 ```typst
-#import "@preview/fubell:0.1.0": thesis, appendix
+#import "@preview/fubell:0.2.0": thesis, appendix
 
 #show: thesis.with(
   university: (zh: "國立臺灣大學", en: "National Taiwan University"),
@@ -82,18 +88,18 @@ fubell/
     en: ("keyword one", "keyword two"),
   ),
 
-  abstract-zh: include "content/abstract-zh.typ",
-  abstract-en: include "content/abstract-en.typ",
-  acknowledgement-zh: include "content/acknowledgement-zh.typ", // optional
-  acknowledgement-en: include "content/acknowledgement-en.typ", // optional
+  abstract-zh: include "sections/abstract-zh.typ",
+  abstract-en: include "sections/abstract-en.typ",
+  acknowledgement-zh: include "sections/acknowledgement-zh.typ", // optional
+  acknowledgement-en: include "sections/acknowledgement-en.typ", // optional
 
-  bibliography-file: bibliography("refs.bib"),
+  bibliography-file: bibliography("bibliography/refs.bib"),
   watermark: none, // optional: e.g. image("assets/watermark.png") (user-provided)
   doi: none, // optional DOI string, e.g. "doi:10.6342/NTU2024XXXXX"
   // certification-pdf: read("cert.pdf", encoding: none), // optional: replace auto page with scanned PDF
 )
 
-#include "content/chapters/introduction.typ"
+#include "sections/chapters/introduction.typ"
 
 // Appendices — switches numbering to "Appendix A" / "附錄A"
 #show: appendix

@@ -78,8 +78,16 @@
         watermark-content
       }))
     },
+    // A custom footer replaces the default one, which is what renders `numbering`.
+    // Render both so page numbers survive when a DOI is set.
     ..if doi != none {
-      (footer: place(right, dx: 2cm, text(size: 10pt)[#doi]))
+      (footer: context {
+        set align(center)
+        if page.numbering != none {
+          counter(page).display(page.numbering)
+        }
+        place(right, dx: 2cm, text(size: 10pt)[#doi])
+      })
     },
   )
 
