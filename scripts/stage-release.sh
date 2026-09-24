@@ -74,13 +74,20 @@ fi
 mkdir -p "$STAGE"
 
 # Files and directories that make up the published package.
+#
+# The NTU watermark is not ours to redistribute — README tells users to download
+# it themselves — so any local copy under template/assets/ is excluded here.
 rsync -a \
     --exclude '.DS_Store' \
     --exclude '*.pdf' \
+    --exclude 'watermark.*' \
     lib.typ src template typst.toml README.md LICENSE CHANGELOG.md ROADMAP.md \
     "$STAGE/"
 
-ok "copied package files"
+leaked=$(find "$STAGE" -iname 'watermark*')
+[[ -z "$leaked" ]] || die "watermark file(s) present in staged package:"$'\n'"$leaked"
+
+ok "copied package files (watermark excluded)"
 
 # ---------------------------------------------------------------------------
 # 3. Rewrite the template import for the published package.
