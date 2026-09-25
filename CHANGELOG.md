@@ -19,6 +19,7 @@
 - Fixed `doi` suppressing page numbers throughout the document. A custom page footer replaces the default one, which is what renders `numbering`, so the footer now draws the page number and the DOI together.
 - Fixed the scaffolded template failing to compile: `typst init` copies only `template/`, so its `#import "../lib.typ"` could never resolve. The released copy now imports `@preview/fubell:<version>`.
 - Reduced duplicated unknown-font warnings by avoiding repeated font stack application in heading styles.
+- `scripts/stage-release.sh` now excludes any local `watermark.*` file from the staged package and fails if one slips through, since the NTU watermark is not redistributable.
 
 ### Changed
 
