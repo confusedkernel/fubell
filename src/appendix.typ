@@ -7,7 +7,14 @@
 
 #import "config.typ"
 
+// Styled bibliography not yet placed. NTU order puts 參考文獻 before 附錄,
+// so `thesis` stores it here and `appendix` places it ahead of the appendices.
+// Whatever is still pending at the end of the document is placed there.
+#let pending-bibliography = state("fubell-pending-bibliography", none)
+
 #let appendix(body) = {
+  context pending-bibliography.get()
+  pending-bibliography.update(none)
   counter(heading).update(0)
 
   let appendix-numbering = (..nums) => {

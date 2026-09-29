@@ -9,7 +9,7 @@
 #import "src/certification.typ": certification-page, certification-page-from-pdf
 #import "src/front-matter-page.typ": front-matter-page
 #import "src/outline-page.typ": outline-page
-#import "src/appendix.typ": appendix
+#import "src/appendix.typ": appendix, pending-bibliography
 
 #let thesis(
   university: (zh: "國立臺灣大學", en: "National Taiwan University"),
@@ -223,22 +223,27 @@
   set page(numbering: "1")
   counter(page).update(1)
 
-  body
-
   // ================================================================
   // Back matter — bibliography
   // ================================================================
 
+  // Placed by `appendix` if the body has one, otherwise after the body.
   if bibliography-file != none {
     let bib-title = pick-lang("參考文獻", "References")
-    pagebreak(weak: true)
-    set bibliography(title: bib-title)
-    show bibliography: set heading(numbering: none)
-    show bibliography: set text(lang: "en")
-    show heading.where(level: 1): it => {
-      align(center, text(size: config.heading-size, weight: "bold")[#it.body])
-      v(1.5em)
-    }
-    bibliography-file
+    pending-bibliography.update({
+      pagebreak(weak: true)
+      set bibliography(title: bib-title)
+      show bibliography: set heading(numbering: none)
+      show bibliography: set text(lang: "en")
+      show heading.where(level: 1): it => {
+        align(center, text(size: config.heading-size, weight: "bold")[#it.body])
+        v(1.5em)
+      }
+      bibliography-file
+    })
   }
+
+  body
+
+  context pending-bibliography.get()
 }

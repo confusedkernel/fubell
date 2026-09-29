@@ -109,7 +109,7 @@ fubell/
 
 ## Appendices
 
-Use `#show: appendix` after your main chapters to switch heading numbering to appendix style. The prefix adapts to the document language:
+Use `#show: appendix` after your main chapters to switch heading numbering to appendix style. If `bibliography-file` is set, the bibliography is placed right before the first appendix, following the NTU order (參考文獻 → 附錄). The prefix adapts to the document language:
 
 | `lang` | Level 1 | Level 2+ |
 |--------|---------|----------|
