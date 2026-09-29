@@ -7,7 +7,7 @@ Inspired by the [ntu-thesis](https://github.com/tzhuan/ntu-thesis) LaTeX templat
 ## Quick Start
 
 ```bash
-typst init @preview/fubell:0.2.0 my-thesis
+typst init @preview/fubell:0.2.1 my-thesis
 cd my-thesis
 typst compile main.typ
 ```
@@ -23,7 +23,7 @@ typst compile --root . template/main.typ
 You can use Fubell directly on the Typst web app (no local CLI required):
 
 1. Create a new project at <https://typst.app>.
-2. In `main.typ`, import `@preview/fubell:0.2.0` and configure `#show: thesis.with(...)` (see the Usage snippet below).
+2. In `main.typ`, import `@preview/fubell:0.2.1` and configure `#show: thesis.with(...)` (see the Usage snippet below).
 3. Add files for any `include` paths you use, or replace those `include` lines with inline content.
 4. Keep `watermark: none` (default), or upload your own `assets/watermark.png` and set `watermark: image("assets/watermark.png")`.
 5. Set `font-profile: "web"` for cleaner fallback behavior on Typst web app.
@@ -64,7 +64,7 @@ fubell/
 ## Usage
 
 ```typst
-#import "@preview/fubell:0.2.0": thesis, appendix
+#import "@preview/fubell:0.2.1": thesis, appendix
 
 #show: thesis.with(
   university: (zh: "國立臺灣大學", en: "National Taiwan University"),

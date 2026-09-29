@@ -4,7 +4,7 @@
 //   typst compile main.typ
 //
 // When using the published version, change the import to:
-//   #import "@preview/fubell:0.1.0": thesis, appendix
+//   #import "@preview/fubell:0.2.1": thesis, appendix
 //
 // If cloned from source, use local import for development
 //   #import "../lib.typ": thesis, appendix

@@ -1,7 +1,7 @@
 // Fubell — NTU thesis template for Typst.
 //
 // Usage:
-//   #import "@preview/fubell:0.1.0": thesis, appendix
+//   #import "@preview/fubell:0.2.1": thesis, appendix
 //   #show: thesis.with( ... )
 
 #import "src/config.typ"

@@ -65,6 +65,6 @@ This roadmap is ordered by **priority first** and **difficulty second**.
 ## Milestone schedule (proposed)
 
 - **v0.1.0:** Scaffold + MVP (P0) — released
-- **v0.2.0:** Submission readiness (P1) — current
+- **v0.2.0:** Submission readiness (P1) — released (patch: v0.2.1)
 - **v0.3.0:** Quality and extensibility (P2)
 - **v1.0.0:** Stable release and Typst Universe publish (P3)

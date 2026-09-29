@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.1 - 2026-09-29
+
 ### Fixed
 
 - Fixed the bibliography being placed after the appendices. NTU order is 參考文獻 then 附錄, so `#show: appendix` now places the bibliography before the first appendix. Documents without appendices are unchanged.
